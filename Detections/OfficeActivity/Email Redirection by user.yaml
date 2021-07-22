@@ -1,15 +1,15 @@
-queryFrequency: PT5H
-queryPeriod: PT5H
+queryFrequency: 5h
+queryPeriod: 5h
 triggerOperator: GreaterThan
 triggerThreshold: 0
 eventGroupingSettings:
   aggregationKind: AlertPerResult
 severity: Medium
-query: |-
+query: |
   OfficeActivity
   | where Operation == "New-InboxRule"
-  | extend AccountCustomIdentity = UserId, ForwardedEmail = tostring(parse_json(Parameters)[2].Value), RuleName = tostring(parse_json(Parameters)[4].Value), IPCustomEntity = ClientIP
-suppressionDuration: PT5H
+  | extend AccountCustomIdentity = UserId,IPCustomIdentity = ClientIP, ForwardedEmail = tostring(parse_json(Parameters)[2].Value), RuleName = tostring(parse_json(Parameters)[4].Value)
+suppressionDuration: 5h
 suppressionEnabled: false
 entityMappings:
 - entityType: Account
@@ -29,16 +29,12 @@ enabled: true
 description: This alert generates a Incident when a redirection rule is created on a user mailbox
 tactics:
 - Exfiltration
-alertRuleTemplateName: 
-lastModifiedUtc: 2021-07-22T16:30:18.7085912Z
-name: dd32f02f-ac86-4aaf-95f3-c6ff096767ef
-id: /subscriptions/42c0cb0f-4280-4ce7-8270-905abec615b1/resourceGroups/rg-sentinel/providers/Microsoft.OperationalInsights/workspaces/la-sentinel/providers/Microsoft.SecurityInsights/alertRules/dd32f02f-ac86-4aaf-95f3-c6ff096767ef
 kind: Scheduled
 createIncident: true
 groupingConfiguration:
   enabled: false
   reopenClosedIncident: false
-  lookbackDuration: PT5H
+  lookbackDuration: 5h
   entitiesMatchingMethod: All
   groupByEntities: []
 playbookName: ""
