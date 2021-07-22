@@ -24,7 +24,7 @@ entityMappings:
   fieldMappings:
   - identifier: Address
     columnName: IPCustomEntity
-displayName: Email Redirection by user
+name: Email Redirection by user
 enabled: true
 description: This alert generates a Incident when a redirection rule is created on a user mailbox
 tactics:
