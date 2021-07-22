@@ -1,6 +1,6 @@
 queryFrequency: 5h
 queryPeriod: 5h
-triggerOperator: GreaterThan
+triggerOperator: gt
 triggerThreshold: 0
 eventGroupingSettings:
   aggregationKind: AlertPerResult
